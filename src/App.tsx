@@ -19,7 +19,6 @@ function App() {
   const tasks2: ITask[] = [
     { id: 1, title: 'Milk', isDone: true },
     { id: 2, title: 'Bread', isDone: false },
-    { id: 3, title: 'Beer', isDone: false },
   ];
   return (
     <div className='App'>

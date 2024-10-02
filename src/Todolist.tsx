@@ -14,19 +14,22 @@ export const Todolist: FC<IProps> = ({ title, tasks }) => {
         <input />
         <button>+</button>
       </div>
-      <ul>
-        {tasks.map(task => (
-          <li key={task.id}>
-            <input type='checkbox' checked={task.isDone} />{' '}
-            <span>{task.title}</span>
-          </li>
-        ))}
-      </ul>
+      <br />
       <div>
         <button>All</button>
         <button>Active</button>
         <button>Completed</button>
       </div>
+
+      <ul>
+        {tasks.map(task => (
+          <li key={task.id}>
+            <button>del</button>
+            <input type='checkbox' checked={task.isDone} />{' '}
+            <span>{task.title}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

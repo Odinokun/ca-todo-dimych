@@ -9,21 +9,16 @@ export interface ITask {
 }
 
 function App() {
-  const tasks1: ITask[] = [
+  const tasks: ITask[] = [
     { id: 1, title: 'HTML&CSS', isDone: true },
     { id: 2, title: 'JS', isDone: true },
     { id: 3, title: 'React', isDone: false },
     { id: 4, title: 'Redux', isDone: false },
   ];
 
-  const tasks2: ITask[] = [
-    { id: 1, title: 'Milk', isDone: true },
-    { id: 2, title: 'Bread', isDone: false },
-  ];
   return (
     <div className='App'>
-      <Todolist title='What to learn' tasks={tasks1} />
-      <Todolist title='What to buy' tasks={tasks2} />
+      <Todolist title='What to learn' tasks={tasks} />
     </div>
   );
 }

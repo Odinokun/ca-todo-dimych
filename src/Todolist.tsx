@@ -24,7 +24,7 @@ export const Todolist: FC<IProps> = ({ title, tasks }) => {
       <ul>
         {tasks.map(task => (
           <li key={task.id}>
-            <button>del</button>
+            <button onClick={() => {}}>del</button>
             <input type='checkbox' checked={task.isDone} />{' '}
             <span>{task.title}</span>
           </li>

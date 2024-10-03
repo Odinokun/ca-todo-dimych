@@ -1,5 +1,11 @@
 import { FC } from 'react';
-import { FilterType, TaskType } from './App';
+import { FilterType } from './App';
+
+export type TaskType = {
+  id: number;
+  title: string;
+  isDone: boolean;
+};
 
 type PropsType = {
   title: string;

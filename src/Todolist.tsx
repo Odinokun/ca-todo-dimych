@@ -1,12 +1,13 @@
 import { FC } from 'react';
-import { ITask } from './App';
+import { TaskType } from './App';
 
-interface IProps {
+type PropsType = {
   title: string;
-  tasks: ITask[];
-}
+  tasks: TaskType[];
+  removeTask: (id: number) => void;
+};
 
-export const Todolist: FC<IProps> = ({ title, tasks }) => {
+export const Todolist: FC<PropsType> = ({ title, tasks, removeTask }) => {
   return (
     <div>
       <h3>{title}</h3>
@@ -24,7 +25,7 @@ export const Todolist: FC<IProps> = ({ title, tasks }) => {
       <ul>
         {tasks.map(task => (
           <li key={task.id}>
-            <button onClick={() => {}}>del</button>
+            <button onClick={() => removeTask(task.id)}>del</button>
             <input type='checkbox' checked={task.isDone} />{' '}
             <span>{task.title}</span>
           </li>

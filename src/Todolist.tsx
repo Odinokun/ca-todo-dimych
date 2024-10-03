@@ -1,12 +1,25 @@
 import { FC } from 'react';
-import { ITask } from './App';
+import { FilterType } from './App';
 
-interface IProps {
+export type TaskType = {
+  id: number;
   title: string;
-  tasks: ITask[];
-}
+  isDone: boolean;
+};
 
-export const Todolist: FC<IProps> = ({ title, tasks }) => {
+type PropsType = {
+  title: string;
+  tasks: TaskType[];
+  removeTask: (id: number) => void;
+  changeFilter: (value: FilterType) => void;
+};
+
+export const Todolist: FC<PropsType> = ({
+  title,
+  tasks,
+  removeTask,
+  changeFilter,
+}) => {
   return (
     <div>
       <h3>{title}</h3>
@@ -14,25 +27,22 @@ export const Todolist: FC<IProps> = ({ title, tasks }) => {
         <input />
         <button>+</button>
       </div>
-      <ul>
-        <li>
-          <input type='checkbox' checked={tasks[0].isDone} />{' '}
-          <span>{tasks[0].title}</span>
-        </li>
-        <li>
-          <input type='checkbox' checked={tasks[1].isDone} />{' '}
-          <span>{tasks[1].title}</span>
-        </li>
-        <li>
-          <input type='checkbox' checked={tasks[2].isDone} />{' '}
-          <span>{tasks[2].title}</span>
-        </li>
-      </ul>
+      <br />
       <div>
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
+        <button onClick={() => changeFilter('all')}>All</button>
+        <button onClick={() => changeFilter('active')}>Active</button>
+        <button onClick={() => changeFilter('completed')}>Completed</button>
       </div>
+
+      <ul>
+        {tasks.map(task => (
+          <li key={task.id}>
+            <button onClick={() => removeTask(task.id)}>del</button>
+            <input type='checkbox' checked={task.isDone} />{' '}
+            <span>{task.title}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

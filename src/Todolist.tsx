@@ -1,13 +1,19 @@
 import { FC } from 'react';
-import { TaskType } from './App';
+import { FilterType, TaskType } from './App';
 
 type PropsType = {
   title: string;
   tasks: TaskType[];
   removeTask: (id: number) => void;
+  changeFilter: (value: FilterType) => void;
 };
 
-export const Todolist: FC<PropsType> = ({ title, tasks, removeTask }) => {
+export const Todolist: FC<PropsType> = ({
+  title,
+  tasks,
+  removeTask,
+  changeFilter,
+}) => {
   return (
     <div>
       <h3>{title}</h3>
@@ -17,9 +23,9 @@ export const Todolist: FC<PropsType> = ({ title, tasks, removeTask }) => {
       </div>
       <br />
       <div>
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
+        <button onClick={() => changeFilter('all')}>All</button>
+        <button onClick={() => changeFilter('active')}>Active</button>
+        <button onClick={() => changeFilter('completed')}>Completed</button>
       </div>
 
       <ul>

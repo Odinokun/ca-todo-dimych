@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { FilterType } from './App';
 
 export type TaskType = {
-  id: number;
+  id: string;
   title: string;
   isDone: boolean;
 };
@@ -10,7 +10,7 @@ export type TaskType = {
 type PropsType = {
   title: string;
   tasks: TaskType[];
-  removeTask: (id: number) => void;
+  removeTask: (id: string) => void;
   changeFilter: (value: FilterType) => void;
 };
 
